@@ -90,6 +90,7 @@ def create():
 def metrics():
     connection = get_db_connection()
     post_count = connection.execute('SELECT count(1) from posts').fetchone()[0]
+    app.logger.info('Metrics request successfull')
     return app.response_class(
         response=json.dumps({
             'post_count': post_count,
@@ -98,14 +99,14 @@ def metrics():
         status=200,
         mimetype='application/json'
     )
-
+    
 
 
 
 # start the application on port 3111
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port='3111')
-   logging.basicConfig(level=logging.DEBUG)
+   logging.basicConfig(filename='app.log',level=logging.DEBUG)
 
 
 
