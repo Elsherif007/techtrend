@@ -19,7 +19,7 @@ def get_post(post_id):
     connection.close()
     return post
 
-Define the Flask application
+# Define the Flask application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
 
