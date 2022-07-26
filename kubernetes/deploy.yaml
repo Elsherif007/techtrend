@@ -21,7 +21,7 @@ spec:
 
       containers:
       - image: mohamedelsherif/techtrends
-      
+        imagePullPolicy: Always
         
         name: techtrends
         ports:
