@@ -8,9 +8,9 @@ service:
   type: ClusterIP
 
 image:
-  repository: diogosilverio/techtrends
+  repository: mohamedelsherif/techtrends
   tag: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 replicaCount: 1
 
