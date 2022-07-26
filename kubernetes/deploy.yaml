@@ -15,6 +15,10 @@ spec:
       labels:
         app: techtrends
     spec:
+      imagePullSecrets:
+      - name: my-secret
+
+
       containers:
       - image: mohamedelsherif/techtrends
       
