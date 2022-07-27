@@ -20,7 +20,7 @@ spec:
 
 
       containers:
-      - image: mohamedelsherif/techtrends
+      - image: mohamedelsherif/techtrends:latest
         imagePullPolicy: Always
         
         name: techtrends
