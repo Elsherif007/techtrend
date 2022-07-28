@@ -1,3 +1,43 @@
+# namespace:
+#   name: sandbox
+
+# service:
+#   port: 4111
+#   targetPort: 3111
+#   protocol: TCP
+#   type: ClusterIP
+
+# image:
+#   repository: mohamedelsherif/techtrends
+#   tag: latest
+#   pullPolicy: Always
+
+# replicaCount: 1
+
+# resources:
+#   requests:
+#     cpu: 250m
+#     memory: 64Mi
+#   limits:
+#     cpu: 500m
+#     memory: 128Mi
+
+# containerPort: 3111
+
+# livenessProbe:
+#   httpGet:
+#     path: /healthz
+#     port: 3111
+#   initialDelaySeconds: 5
+#   periodSeconds: 5
+
+# readinessProbe:
+#   httpGet:
+#     path: /healthz
+#     port: 3111
+#   initialDelaySeconds: 5
+#   periodSeconds: 5
+
 namespace:
   name: sandbox
 
@@ -8,32 +48,24 @@ service:
   type: ClusterIP
 
 image:
-  repository: mohamedelsherif/techtrends
+  repository: techtrends
   tag: latest
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 replicaCount: 1
 
 resources:
   requests:
-    cpu: 250m
     memory: 64Mi
+    cpu: 250m
   limits:
-    cpu: 500m
     memory: 128Mi
+    cpu: 500m
 
 containerPort: 3111
 
 livenessProbe:
-  httpGet:
-    path: /healthz
-    port: 3111
-  initialDelaySeconds: 5
-  periodSeconds: 5
+  path: /healthz
 
 readinessProbe:
-  httpGet:
-    path: /healthz
-    port: 3111
-  initialDelaySeconds: 5
-  periodSeconds: 5
+  path: /healthz
