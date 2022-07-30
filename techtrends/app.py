@@ -6,13 +6,17 @@ from werkzeug.exceptions import abort
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
+connection_count = 0
 def get_db_connection():
+    global connection_count
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    connection_count += 1
     return connection
 
 # Function to get a post using its ID
 def get_post(post_id):
+    global connection_count
     connection = get_db_connection()
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
@@ -39,7 +43,7 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-      app.logger.info('Article with id {post_id} not found')
+      app.logger.error('Article with id {post_id} not found')
       return render_template('404.html'), 404
     else:
       app.logger.info('Article "{postTitle}" found!')
@@ -96,7 +100,7 @@ def metrics():
     return app.response_class(
         response=json.dumps({
             'post_count': post_count,
-            'db_connection_count': connection_count
+            
         }),
         status=200,
         mimetype='application/json'
