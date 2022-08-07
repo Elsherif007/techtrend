@@ -100,6 +100,7 @@ def metrics():
     return app.response_class(
         response=json.dumps({
             'post_count': post_count,
+            'db_connection_count': connection_count
             
         }),
         status=200,
